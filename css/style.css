@@ -32,13 +32,6 @@ body {
 /******************************************
 /* LAYOUT
 /*******************************************/
-#image-track > .image {
-	width: 40vmin;
-	height: 56vmin;
-	object-fit: cover;
-	object-position: center;
-}
-
 #image-track {
 	display: flex;
 	gap: 4vmin;
@@ -46,7 +39,16 @@ body {
 	left: 50%;
 	top: 50%;
 	transform: translate(0%, -50%);
+	user-select: none; /* -- Prevents highlighting -- */
 }
+
+#image-track > .image {
+	width: 40vmin;
+	height: 56vmin;
+	object-fit: cover;
+	object-position: 100% center;
+}
+
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
