@@ -1,15 +1,13 @@
 const track = document.getElementById('image-track')
 
-window.onmousedown = e => {
-	track.dataset.mouseDownAt = e.clientX
-}
+const handleOnDown = e => (track.dataset.mouseDownAt = e.clientX)
 
-window.onmouseup = e => {
+const handleOnUp = () => {
 	track.dataset.mouseDownAt = '0'
 	track.dataset.prevPercentage = track.dataset.percentage
 }
 
-window.onmousemove = e => {
+const handleOnMove = e => {
 	if (track.dataset.mouseDownAt === '0') return
 
 	const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
@@ -41,3 +39,17 @@ window.onmousemove = e => {
 		)
 	}
 }
+
+/* -- Had to add extra lines for touch events -- */
+
+window.onmousedown = e => handleOnDown(e)
+
+window.ontouchstart = e => handleOnDown(e.touches[0])
+
+window.onmouseup = e => handleOnUp(e)
+
+window.ontouchend = e => handleOnUp(e.touches[0])
+
+window.onmousemove = e => handleOnMove(e)
+
+window.ontouchmove = e => handleOnMove(e.touches[0])
