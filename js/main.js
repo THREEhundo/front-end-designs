@@ -40,6 +40,47 @@ const handleOnMove = e => {
 	}
 }
 
+const handleOnWheel = e => {
+	e.preventDefault()
+
+	const delta = e.deltaY
+	const maxDelta = window.innerWidth / 6
+	let prevPercentage = parseFloat(track.dataset.prevPercentage)
+	let nextPercentage = prevPercentage - (delta / maxDelta) * 10
+
+	if (nextPercentage > 0) {
+		nextPercentage = 0
+	} else if (nextPercentage < -100) {
+		nextPercentage = -100
+	}
+
+	track.dataset.percentage = nextPercentage
+
+	track.animate(
+		{
+			transform: `translate(${nextPercentage}%, -50%)`
+		},
+		{ duration: 1200, fill: 'forwards' }
+	)
+
+	for (const image of track.getElementsByClassName('image')) {
+		image.animate(
+			{
+				objectPosition: `${100 + nextPercentage}% center`
+			},
+			{ duration: 1200, fill: 'forwards' }
+		)
+	}
+
+	// update prevPercentage to the new value of nextPercentage
+	prevPercentage = nextPercentage
+	track.dataset.prevPercentage = prevPercentage.toString()
+}
+
+/* -- Refactored code to add {passive: false} option to the wheel event listener -- */
+
+window.addEventListener('wheel', handleOnWheel, { passive: false })
+
 /* -- Had to add extra lines for touch events -- */
 
 window.onmousedown = e => handleOnDown(e)
