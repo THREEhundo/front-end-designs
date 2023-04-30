@@ -1,35 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="Your description goes here" />
+		<meta name="keywords" content="one, two, three" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-	<meta charset="utf-8">
-	<meta name="description" content="Your description goes here">
-	<meta name="keywords" content="one, two, three">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Sliding Animation</title>
 
-	<title>Sliding Animation</title>
+		<!-- external CSS link -->
+		<script
+			src="https://kit.fontawesome.com/1a624882e2.js"
+			crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="css/normalize.css" />
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
 
-	<!-- external CSS link -->
-	<script src="https://kit.fontawesome.com/1a624882e2.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="css/normalize.css">
-	<link rel="stylesheet" href="css/style.css">
-</head>
+	<body>
+    <nav>
+      <ul>
+        <li><a href="/">Work</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+    </nav>
 
-<body>
+		<div
+			class="image-track"
+			data-mouse-down-at="0"
+			data-prev-percentage="0">
+			<div class="image-container">
+				<img
+					src="./assets/shiba.jpeg"
+					alt="shiba inu"
+					class="image"
+					draggable="false" />
+			</div>
+			<div class="image-container">
+				<img
+					src="./assets/windy-road.jpeg"
+					alt="halo"
+					class="image"
+					draggable="false" />
+			</div>
+			<div class="image-container">
+				<img
+					src="./assets/doorway.jpeg"
+					alt="doorway"
+					class="image"
+					draggable="false" />
+			</div>
+			<div class="image-container">
+				<img
+					src="./assets/gas-station.jpeg"
+					alt="shell"
+					class="image"
+					draggable="false" />
+			</div>
+			<div class="image-container">
+				<img
+					src="./assets/broad.avif"
+					alt="the broad"
+					class="image"
+					draggable="false" />
+			</div>
+			<div class="image-container">
+				<img
+					src="./assets/orange.jpeg"
+					alt="orange doorways"
+					class="image"
+					draggable="false" />
+			</div>
+			<div class="image-container">
+				<img
+					src="./assets/taj.jpeg"
+					alt="taj mahal"
+					class="image"
+					draggable="false" />
+			</div>
+			<div class="image-container">
+				<img
+					src="./assets/neon.jpeg"
+					alt="nothing to see here"
+					class="image"
+					draggable="false" />
+			</div>
+		</div>
 
-	<div class="image-track" data-mouse-down-at="0" data-prev-percentage="0">
-		<img src="./assets/shiba.jpeg" alt="shiba inu" class="image" draggable="false">
-		<img src="./assets/windy-road.jpeg" alt="halo" class="image" draggable="false">
-		<img src="./assets/doorway.jpeg" alt="doorway" class="image" draggable="false">
-		<img src="./assets/gas-station.jpeg" alt="shell" class="image" draggable="false">
-		<img src="./assets/broad.avif" alt="the broad" class="image" draggable="false">
-		<img src="./assets/orange.jpeg" alt="orange doorways" class="image" draggable="false">
-		<img src="./assets/taj.jpeg" alt="taj mahal" class="image" draggable="false">
-		<img src="./assets/neon.jpeg" alt="nothing to see here" class="image" draggable="false">
-		
-	</div>
-
-	<script type="text/javascript" src="js/main.js"></script>
-</body>
-
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
 </html>

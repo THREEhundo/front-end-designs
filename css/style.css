@@ -1,6 +1,7 @@
 /* Box Model Hack */
 * {
 	box-sizing: border-box;
+	color: white;
 }
 
 /* Clear fix hack */
@@ -22,6 +23,7 @@
 /*******************************************/
 
 body {
+	min-height: 100vh;
 	height: 100vh;
 	width: 100vw;
 	background-color: black;
@@ -29,10 +31,36 @@ body {
 	overflow: hidden;
 }
 
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
 /******************************************
 /* LAYOUT
 /*******************************************/
-#image-track {
+nav {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+nav > ul {
+	display: flex;
+	gap: 4vmin;
+	align-items: center;
+	justify-content: center;
+	padding: 0%;
+	margin: 2rem;
+}
+
+nav > ul > li {
+	font-size: large;
+}
+
+.image-track {
 	display: flex;
 	gap: 4vmin;
 	position: absolute;
@@ -42,13 +70,33 @@ body {
 	user-select: none; /* -- Prevents highlighting -- */
 }
 
-#image-track > .image {
+.image-track > .image-container > .image {
 	width: 40vmin;
 	height: 56vmin;
 	object-fit: cover;
 	object-position: 100% center;
 }
 
+.image-container {
+	display: contents;
+}
+
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
+
+.expanded {
+	position: fixed;
+	top: 50%;
+	/*left: 50%;*/
+	transform: translate(-50%, -50%);
+	max-height: 100%;
+	max-width: 100%;
+	object-fit: cover;
+	z-index: 9999;
+	width: 100vw;
+}
+
+.fh {
+	height: 100vh;
+}
