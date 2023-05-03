@@ -71,7 +71,7 @@ nav > ul > li {
 	user-select: none; /* -- Prevents highlighting -- */
 }
 
-.image-track > .image-container > .image {
+.image {
 	width: 50vmin;
 	height: 56vmin;
 	object-fit: cover;
@@ -100,4 +100,10 @@ nav > ul > li {
 
 .fh {
 	height: 100vh;
+}
+
+#test {
+	background-image: url(../assets/JetpackCyberpunkPoster.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
 }
