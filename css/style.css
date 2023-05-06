@@ -47,6 +47,7 @@ nav {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	user-select: none;
 }
 nav > ul {
 	display: flex;
@@ -71,16 +72,31 @@ nav > ul > li {
 	user-select: none; /* -- Prevents highlighting -- */
 }
 
-.image {
-	width: 50vmin;
-	height: 56vmin;
-	object-fit: cover;
-	object-position: 100% center;
-}
-
 .image-container {
 	display: contents;
 }
+
+.image {
+	width: 30vmin;
+	height: 45vmin;
+	object-fit: cover;
+	object-position: 100% center;
+	filter: grayscale(100%);
+}
+
+.image:hover {
+	filter: none;
+}
+/*
+.image.expanded {
+	height: 30vh;
+	width: 50vw;
+	position: absolute;
+	top: 50%;
+	left: 0%;
+	transform: translate(-50%, -50%);
+	z-index: 9999;
+}*/
 
 /******************************************
 /* ADDITIONAL STYLES
@@ -89,7 +105,7 @@ nav > ul > li {
 .expanded {
 	position: fixed;
 	top: 50%;
-	/*left: 50%;*/
+	left: 0;
 	transform: translate(-50%, -50%);
 	max-height: 100%;
 	max-width: 100%;

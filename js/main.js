@@ -1,4 +1,6 @@
 const track = document.querySelector('.image-track')
+const images = document.querySelectorAll('.image')
+let prevPercentage = 0
 
 const handleOnDown = e => (track.dataset.mouseDownAt = e.clientX)
 
@@ -30,7 +32,7 @@ const handleOnMove = e => {
 		{ duration: 1200, fill: 'forwards' }
 	)
 
-	for (const image of track.getElementsByClassName('image')) {
+	for (const image of images) {
 		const container = image.parentElement
 		container.animate(
 			{
@@ -55,7 +57,7 @@ const handleOnWheel = e => {
 	// calculate the maximum amount that the track should be translated based on the width of the window
 	const maxDelta = window.innerWidth / 2
 	// get the previous percentage value from the data attribute of the track element and convert it to a float
-	let prevPercentage = parseFloat(track.dataset.prevPercentage)
+	prevPercentage = parseFloat(track.dataset.prevPercentage) || 0
 	// calculate the new percentage value based on the previous value and the amount of change in the scroll wheel delta
 	let nextPercentage = prevPercentage - (delta / maxDelta) * 10
 
@@ -81,7 +83,7 @@ const handleOnWheel = e => {
 	)
 
 	// loop through each image element inside the track element
-	for (const image of track.getElementsByClassName('image')) {
+	for (const image of images) {
 		// get the container element that wraps the image
 		const container = image.parentElement
 		// animate the container element to translate it to the new position
@@ -122,3 +124,45 @@ window.ontouchend = e => handleOnUp(e.touches[0])
 window.onmousemove = e => handleOnMove(e)
 
 window.ontouchmove = e => handleOnMove(e.touches[0])
+
+const handleClick = e => {
+	//for (const image of images) {
+	//}
+	e.target.classList.toggle('expanded')
+	if (e.target.classList.contains('expanded'))
+		window.removeEventListener('wheel', handleOnWheel, { passive: false })
+	if (!e.target.classList.contains('expanded'))
+		window.addEventListener('wheel', handleOnWheel, { passive: false })
+}
+
+images.forEach(img => {
+	// convert from hover to onClick change
+	// text color
+	// animate text in
+	// background color
+	// track size (animate outwards)
+
+	// mousewheeldown eventhandler revert
+	// text color
+	// animate text out
+	// background color
+	// track size (animate inward)
+	img.addEventListener(
+		'click',
+		handleClick
+		//console.log(img.dataset.color)
+		//const style = window.getComputedStyle(img, ':hover')
+		//if (style.getPropertyValue('filter') === 'none') {
+		//	const ul = document.querySelectorAll('.nav-item')
+		//	ul.forEach(li => (li.style.color = `#${img.dataset.color}`))
+		//}
+	)
+	img.addEventListener('mouseleave', () => {
+		//const style = window.getComputedStyle(img)
+		//if (style.getPropertyValue('filter') === 'grayscale(1)') {
+		//	console.log(`hi`)
+		//	const ul = document.querySelectorAll('.nav-item')
+		//	ul.forEach(li => (li.style.color = 'white'))
+		//}
+	})
+})
